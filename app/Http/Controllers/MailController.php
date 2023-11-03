@@ -11,6 +11,7 @@ use App\Model\Surat;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
+
 class MailController extends Controller
 {
     /**
@@ -84,7 +85,7 @@ class MailController extends Controller
             $filename = $file->getClientOriginalName();
 
             // Simpan File Ke Directory (generate a unique ID for file name)
-            $path = Storage::disk('public')->putFile('pdf', $file);
+            $path = Storage::disk('public')->put('pdf', $file); #Terdapat bug di putFile, sudah diperbaiki
 
             $fields['filename'] = $filename;
             $fields['path'] = $path;
